@@ -3,18 +3,18 @@ package main
 type Item struct {
 	id               int
 	price            float64
-	products         []product
+	products         []Product
 	numberOfProducts int
 }
 
-func (item *Item) addProducts(Product product) {
-	item.products = append(item.products, Product)
+func (item *Item) addProducts(product Product) {
+	item.products = append(item.products, product)
 	item.numberOfProducts++
 }
 
-func (item *Item) removeProducts(Product int) {
+func (item *Item) removeProducts(productToRemove Product) {
 	for product := 0; product < item.numberOfProducts; product++ {
-		if item.products[product].id == Product {
+		if item.products[product].Id == productToRemove.getId() {
 			item.products = append(item.products[:product], item.products[product+1:]...)
 			item.numberOfProducts--
 		}
